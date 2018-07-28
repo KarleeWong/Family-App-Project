@@ -1,0 +1,12 @@
+#profile-pic {
+  float:left;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+}
+
+h2 {
+  font-size: 48px;
+  display: inline-block;
+  margin: 10px;
+}
