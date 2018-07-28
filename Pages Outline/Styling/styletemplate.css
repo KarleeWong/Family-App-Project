@@ -1,39 +1,37 @@
-body {
-  background-color: #CCCCCC;
+#timeline {
+  background-color: #86B3D1;
 }
 
-#title {
-  margin: 10px;
-  padding: 30px;
+#tree {
+  background-color: #99CED3
+}
+
+#collection {
+  background-color: #EDB5BF;
+}
+
+.title {
   background-color: white;
+  margin-top: 0px;
+  padding: 20px;
 }
 
-img {
-  width: 100%;
-  hegith: auto;
-}
-
-#des {
-  margin: 10px;
-  background-color: white;
-  padding: 25px;
-}
-
-p {
-  color:#C1C8E4;
+.title-text {
+  color: #D8C3A5;
+  font-family: sans-serif;
   text-align: center;
-  font-family: verdana;
+  margin-top: 0px;
 }
 
 h1 {
-  margin: 0px;
   font-size: 48px;
-  font-family: helvetica;
-  text-align: center;
-  color: #A1C3D1;
 }
 
-#mySidenav a {
+p {
+  font-size: 12px;
+}
+
+a {
     position: absolute; /* Position them relative to the browser window */
     left: -100px; /* Position them outside of the screen */
     transition: 0.3s; /* Add transition on hover */
@@ -45,21 +43,11 @@ h1 {
     border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
 }
 
-#mySidenav a:hover {
+a:hover {
     left: 0; /* On mouse-over, make the elements appear as they should */
 }
 
-#timeline {
+#frontpage {
     top: 20px;
-    background-color: #86B3D1;
-}
-
-#collection {
-    top: 80px;
-    background-color: #EDB5BF;
-}
-
-#tree {
-    top: 140px;
-    background-color: #99CED3;
+    background-color: #CCCCCC;
 }
