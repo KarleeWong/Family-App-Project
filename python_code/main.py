@@ -13,5 +13,5 @@ class ImageImporter(webapp2.RequestHandler):
         self.response.write('hi')
 
 app = webapp2.WSGIApplication([
-    ('/fam', ImageImporter)
+    ('/', ImageImporter)
 ], debug=True)
