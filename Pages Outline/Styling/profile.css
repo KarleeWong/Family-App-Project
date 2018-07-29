@@ -1,12 +1,54 @@
+body {
+  background-color: #FFFFFF;
+}
+
 #profile-pic {
+  margin-left: 35px;
   float:left;
   display: inline-block;
   width: 150px;
   height: 150px;
 }
 
+p {
+  color: white;
+  padding: 50px;
+  background-color: #E4C580;
+  font-family: verdana;
+  margin: 35px;
+}
+
 h2 {
+  font-family: verdana;
   font-size: 48px;
+  text-align: center;
+  color: #E4C580;
   display: inline-block;
-  margin: 10px;
+  margin: 50px;
+}
+
+a {
+    position: absolute; /* Position them relative to the browser window */
+    left: -100px; /* Position them outside of the screen */
+    transition: 0.3s; /* Add transition on hover */
+    padding: 15px; /* 15px padding */
+    width: 100px; /* Set a specific width */
+    text-decoration: none; /* Remove underline */
+    font-size: 20px; /* Increase font size */
+    color: white; /* White text color */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+}
+
+a:hover {
+    left: 0; /* On mouse-over, make the elements appear as they should */
+}
+
+#frontpage {
+    top: 80px;
+    background-color: #D8C3A5;
+}
+
+#tree {
+    top: 20px;
+    background-color: #86B3D1;
 }
