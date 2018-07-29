@@ -8,20 +8,30 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 
-class EnterInfoHandler(webapp2.RequestHandler):
+class MainPage(webapp2.RequestHandler):
     def get(self):
         frontpage_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
         self.response.write(frontpage_template.render())
 
 
-# class ImageImporter(webapp2.RequestHandler):
-#     def get(self):
-#         frontpage_template = JINJA_ENVIRONMENT.get_template('pages_outline/frontpage.html')
-#         self.response.write(frontpage_template.render())
-#     def post(self):
-#         self.response.write('hi')
+class Collection(webapp2.RequestHandler):
+    def get(self):
+        collection_template = JINJA_ENVIRONMENT.get_template('pages_outline/collection.html')
+        self.response.write(collection_template.render())
+
+class Timeline(webapp2.RequestHandler):
+    def get(self):
+        timeline_template = JINJA_ENVIRONMENT.get_template('pages_outline/timeline.html')
+        self.response.write(timeline_template.render())
+
+class Tree(webapp2.RequestHandler):
+    def get(self):
+        tree_template = JINJA_ENVIRONMENT.get_template('pages_outline/tree.html')
+        self.response.write(tree_template.render())
 
 app = webapp2.WSGIApplication([
-    ('/', EnterInfoHandler),
-    # ('/', ImageImporter)
+    ('/', MainPage),
+    ('/collection', Collection),
+    ('/timeline', Timeline),
+    ('/tree', Tree)
 ], debug=True)
