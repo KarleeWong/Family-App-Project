@@ -5,18 +5,10 @@ api_version: 1
 threadsafe: yes
 
 handlers:
-- url: /favicon\.ico
+- url: /Pages Outline
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /app-stylesheets
-  static_dir: app-stylesheets
-
-- url: /my-images
-  static_dir: my-images
-
-- url: /app-js
-  static_dir: app-js
 #new handlers should go ABOVE the catch all url (.*)
 - url: .*
   script: main.app
