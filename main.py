@@ -10,9 +10,21 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
+        login_template = JINJA_ENVIRONMENT.get_template('templates/login.html')
+        self.response.write(login_template.render())
+
+    def post(self):
+        login_template = JINJA_ENVIRONMENT.get_template('templates/login.html')
+        self.response.write(login_template.render())
+
+class frontpage(webapp2.RequestHandler):
+    def get(self):
         frontpage_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
         self.response.write(frontpage_template.render())
 
+    def post(self):
+        login_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
+        self.response.write(login_template.render())
 
 class Collection(webapp2.RequestHandler):
     def get(self):
@@ -41,6 +53,7 @@ class About(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/frontpage', frontpage),
     ('/collection', Collection),
     ('/timeline', Timeline),
     ('/tree', Tree),
