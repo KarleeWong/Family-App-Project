@@ -16,17 +16,17 @@ class MainPage(webapp2.RequestHandler):
 
 class Collection(webapp2.RequestHandler):
     def get(self):
-        collection_template = JINJA_ENVIRONMENT.get_template('pages_outline/collection.html')
+        collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
         self.response.write(collection_template.render())
 
 class Timeline(webapp2.RequestHandler):
     def get(self):
-        timeline_template = JINJA_ENVIRONMENT.get_template('pages_outline/timeline.html')
+        timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
         self.response.write(timeline_template.render())
 
 class Tree(webapp2.RequestHandler):
     def get(self):
-        tree_template = JINJA_ENVIRONMENT.get_template('pages_outline/tree.html')
+        tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
         self.response.write(tree_template.render())
 
 app = webapp2.WSGIApplication([
