@@ -29,9 +29,15 @@ class Tree(webapp2.RequestHandler):
         tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
         self.response.write(tree_template.render())
 
+class Profile(webapp2.RequestHandler):
+    def get(self):
+        profile_template = JINJA_ENVIRONMENT.get_template('templates/profile.html')
+        self.response.write(profile_template.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/collection', Collection),
     ('/timeline', Timeline),
-    ('/tree', Tree)
+    ('/tree', Tree),
+    ('/profile',Profile)
 ], debug=True)
