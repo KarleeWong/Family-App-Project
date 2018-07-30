@@ -58,6 +58,11 @@ class About(webapp2.RequestHandler):
         about_template = JINJA_ENVIRONMENT.get_template('templates/about.html')
         self.response.write(about_template.render())
 
+class Settings(webapp2.RequestHandler):
+    def get(self):
+        about_template = JINJA_ENVIRONMENT.get_template('templates/settings.html')
+        self.response.write(about_template.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/frontpage', frontpage),
@@ -65,5 +70,6 @@ app = webapp2.WSGIApplication([
     ('/timeline', Timeline),
     ('/tree', Tree),
     ('/profile', Profile),
-    ('/about', About)
+    ('/about', About),
+    ('/settings', Settings)
 ], debug=True)
