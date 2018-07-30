@@ -66,12 +66,12 @@ h1 {
     background-color: #99CED3;
 }
 
-#about {
+#settings {
     top: 200px;
-    background-color: #5d5d5d;
+    background-color: #F8E9A1;
 }
 
-#settings {
+#about {
     top: 260px;
-    background-color: #F8E9A1;
+    background-color: #5d5d5d;
 }
