@@ -7,7 +7,7 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /templates/Styling
+- url: /Styling
   static_dir: Styling
 
 - url: /.*
