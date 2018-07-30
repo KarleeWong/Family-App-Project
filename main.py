@@ -34,10 +34,16 @@ class Profile(webapp2.RequestHandler):
         profile_template = JINJA_ENVIRONMENT.get_template('templates/profile.html')
         self.response.write(profile_template.render())
 
+class About(webapp2.RequestHandler):
+    def get(self):
+        about_template = JINJA_ENVIRONMENT.get_template('templates/about.html')
+        self.response.write(about_template.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/collection', Collection),
     ('/timeline', Timeline),
     ('/tree', Tree),
-    ('/profile',Profile)
+    ('/profile', Profile),
+    ('/about', About)
 ], debug=True)
