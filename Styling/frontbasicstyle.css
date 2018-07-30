@@ -9,6 +9,7 @@ body {
 }
 
 img {
+  border-radius: 50px;
   width: 100%;
   height: auto;
 }
@@ -26,6 +27,7 @@ p {
 }
 
 h1 {
+  padding: 20px;
   margin: 0px;
   font-size: 48px;
   font-family: helvetica;
