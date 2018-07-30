@@ -24,7 +24,14 @@ class frontpage(webapp2.RequestHandler):
 
     def post(self):
         login_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
-        self.response.write(login_template.render())
+
+        front_image = self.request.get('url-front')
+
+        front_page_dictionary = {
+            "front_image": front_image,
+        }
+
+        self.response.write(login_template.render(front_page_dictionary))
 
 class Collection(webapp2.RequestHandler):
     def get(self):
