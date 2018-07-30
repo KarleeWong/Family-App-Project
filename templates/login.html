@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <meta name="google-signin-client_id" content="78103231201-60bhtd0co2nf6n68vvfata8ru25c7fmu.apps.googleusercontent.com">
+
+  </head>
+  <body>
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+      function signOut() {
+        let auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            // console.log('User signed out.');
+          });
+        }
+      </script>
+
+    <form method="POST" action='/'></form>
+    <form method="POST" action='/frontpage'>
+      <center><div class="g-signin2" data-onsuccess="onSignIn"></div></center>
+      <center><input type="submit" name="Welcome" value="Welcome"></center>
+    </form>
+  </body>
+</html>
