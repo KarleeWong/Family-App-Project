@@ -9,8 +9,9 @@ body {
 }
 
 img {
+  border-radius: 50px;
   width: 100%;
-  hegith: auto;
+  height: auto;
 }
 
 #des {
