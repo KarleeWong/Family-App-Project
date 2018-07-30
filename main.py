@@ -26,6 +26,9 @@ class frontpage(webapp2.RequestHandler):
         login_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
         self.response.write(login_template.render())
 
+    def get_image(self):
+        front_image = self.request.get(img_file)
+
 class Collection(webapp2.RequestHandler):
     def get(self):
         collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')

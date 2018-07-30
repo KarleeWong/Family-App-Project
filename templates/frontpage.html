@@ -7,16 +7,17 @@
   </head>
 
 
-  <body>
-    <form method="POST" action='/frontpage'></form>
+<body>
+    <form method="POST" action='/frontpage'>
 
     <div id="title">
       <h1>CSSI 2018 Family</h1>
 
-      <img src="https://au.extremenetworks.com/wp-content/uploads/sites/11/2016/02/placeholder-block.png" alt="Placeholder">
-
+      <img src="front_images" alt="Placeholder">
+      <input type="file" accept="Url" name="img_file"/>
+      <input type="submit" value="Upload your image"/>
     </div>
-
+    </form>
     <div id="des">
       <p>(Description)</p>
     </div>
@@ -27,4 +28,5 @@
       <a href="/tree" id="tree">Tree</a>
 
     </div>
+  </body>
 </html>
