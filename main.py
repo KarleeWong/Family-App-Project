@@ -38,8 +38,9 @@ class MainPage(BaseHandler):
 class frontpage(BaseHandler):
     def get(self):
         front_image = self.session.get('teddy')
+
         frontpage_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
-        
+
         front_page_dictionary = {
             "front_image": front_image,
         }
@@ -84,18 +85,17 @@ class About(webapp2.RequestHandler):
         about_template = JINJA_ENVIRONMENT.get_template('templates/about.html')
         self.response.write(about_template.render())
 
-<<<<<<< HEAD
+
 class Settings(webapp2.RequestHandler):
     def get(self):
         about_template = JINJA_ENVIRONMENT.get_template('templates/settings.html')
         self.response.write(about_template.render())
-=======
 
 config = {}
 config['webapp2_extras.sessions'] = {
     'secret_key' : "1234",
 }
->>>>>>> aa74ef84eb08e10d679f06753297d52b6ccf8338
+
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
@@ -104,11 +104,7 @@ app = webapp2.WSGIApplication([
     ('/timeline', Timeline),
     ('/tree', Tree),
     ('/profile', Profile),
-<<<<<<< HEAD
+
     ('/about', About),
     ('/settings', Settings)
 ], debug=True)
-=======
-    ('/about', About)
-], debug=True, config=config)
->>>>>>> aa74ef84eb08e10d679f06753297d52b6ccf8338
