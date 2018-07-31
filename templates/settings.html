@@ -1,18 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Settings</title>
+<head>
+  <meta charset="utf-8">
+  <title>Settings</title>
+  <link rel="stylesheet" href="../Styling/styletemplate.css">
+  <script src="timeline_script.js"></script>
   </head>
 
-  <body>
 
-    <form class="" action="index.html" method="post">
-      <h2>Upload More Pictures</h2>
+  <body id="settings">
 
-      <h2>Change Your Family Name</h2>
+    <a href="/frontpage" id="frontpage">Home</a>
 
-      <h2>Add Family Member</h2>
+    <form class="center-form" action="" method="post">
+      <div>
+        <h2>Pictures</h2>
+        <div class="inputs">
+          <h4>Upload More Pictures</h4>
+          <input type="input" accept="url" name="add-image"/>
+          <input type="submit" value="Upload Your Image"/>
+          <h4>Whose in the photo?</h4>
+          <input type="text" name="family-member" value="">
+        </div>
+      </div>
+    </form>
+
+    <form class="center-form" action="" method="post">
+      <div>
+        <h2>Family Name</h2>
+        <div class="inputs">
+          <h4>Edit Family Name:</h4>
+          <input type="text" name="family-names" value="">
+        </div>
+      </div>
+    </form>
+
+    <form class="center-form" action="" method="post">
+      <div class="set-family">
+        <h2>Family Members</h2>
+        <div class="inputs">
+          <h3>Add Family Member</h3></td>
+          <h4>Name:</h4></td>
+          <input type="text" name="family-member-name" value="">
+          <h4>Description:</h4>
+          <textarea name="family-member-des" value=""></textarea>
+        </div>
+      </div>
     </form>
 
   </body>

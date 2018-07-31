@@ -45,6 +45,41 @@
   background-color: #EDB5BF;
 }
 
+#settings {
+  background-color: #E8E8E8;
+}
+
+.center-form {
+  margin-left:15%;
+  margin-right:15%;
+}
+
+.inputs {
+  margin-top: 0px;
+  padding: 25px;
+  background-color: white;
+}
+
+.center-form h2 {
+  margin-bottom: 3px;
+  font-family: monospace;
+}
+
+.center-form h4 {
+  font-family: sans-serif;
+}
+
+textarea {
+    width: 50%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
 .title {
   background-color: white;
   margin-top: 0px;
