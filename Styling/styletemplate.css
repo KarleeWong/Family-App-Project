@@ -45,6 +45,25 @@
   background-color: #EDB5BF;
 }
 
+.collection_outline {
+  margin: 1px;
+  background-color: white;
+  display: inline-block;
+}
+
+.collection_outline p {
+  margin: 0px;
+  font-family: sans-serif;
+  font-variant: small-caps;
+  font-size: 20px;
+  text-align: center;
+}
+
+.collection_pictures {
+  width: 200px;
+  height: 200px;
+}
+
 #settings {
   background-color: #E8E8E8;
 }

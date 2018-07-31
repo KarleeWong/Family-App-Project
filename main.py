@@ -35,11 +35,14 @@ class frontpage(BaseHandler):
     def get(self):
         front_image = self.session.get('teddy')
         bio_text = self.session.get('family-message')
+        family_name = self.session.get('familyName')
+
         frontpage_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
 
         front_page_dictionary = {
             "front_image": front_image,
-            "bio_text": bio_text
+            "bio_text": bio_text,
+            "family_name": family_name
         }
 
         self.response.write(frontpage_template.render(front_page_dictionary))
@@ -53,20 +56,33 @@ class frontpage(BaseHandler):
         bio_text = self.request.get('bio')
         self.session['family-message'] = bio_text
 
+        family_name = self.request.get('family-name')
+        self.session['familyName'] = family_name
+
         front_page_dictionary = {
             "front_image": front_image,
-            "bio_text": bio_text
+            "bio_text": bio_text,
+            "family_name": family_name
         }
 
         self.response.write(login_template.render(front_page_dictionary))
 
-class Collection(webapp2.RequestHandler):
+class Collection(BaseHandler):
     def get(self):
         collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
-        self.response.write(collection_template.render())
+
+        new_image = self.session.get('photo')
+        family_members = self.session.get('family-members-photo')
+
+        collection_dictionary = {
+            "new_image": new_image,
+            "family_members": family_members
+        }
+
+        self.response.write(collection_template.render(collection_dictionary))
 
     def post(self):
-        login_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
+        collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
 
         new_image = self.request.get('add-image')
         self.session['photo'] = new_image
@@ -75,11 +91,11 @@ class Collection(webapp2.RequestHandler):
         self.session['family-members-photo'] = family_members
 
         collection_dictionary = {
-            "photo": new_image,
-            "family_members": bio_text
+            "new_image": new_image,
+            "family_members": family_members
         }
 
-        self.response.write(login_template.render(front_page_dictionary))
+        self.response.write(collection_template.render(collection_dictionary))
 
 class Timeline(webapp2.RequestHandler):
     def get(self):
