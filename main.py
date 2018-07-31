@@ -34,10 +34,12 @@ class MainPage(BaseHandler):
 class frontpage(BaseHandler):
     def get(self):
         front_image = self.session.get('teddy')
+        bio_text = self.session.get('family-message')
         frontpage_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
 
         front_page_dictionary = {
             "front_image": front_image,
+            "bio_text": bio_text
         }
 
         self.response.write(frontpage_template.render(front_page_dictionary))
@@ -48,8 +50,12 @@ class frontpage(BaseHandler):
         front_image = self.request.get('url-front')
         self.session['teddy'] = front_image
 
+        bio_text = self.request.get('bio')
+        self.session['family-message'] = bio_text
+
         front_page_dictionary = {
             "front_image": front_image,
+            "bio_text": bio_text
         }
 
         self.response.write(login_template.render(front_page_dictionary))
@@ -58,6 +64,22 @@ class Collection(webapp2.RequestHandler):
     def get(self):
         collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
         self.response.write(collection_template.render())
+
+    def post(self):
+        login_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
+
+        new_image = self.request.get('add-image')
+        self.session['photo'] = new_image
+
+        family_members = self.request.get('family-member')
+        self.session['family-members-photo'] = family_members
+
+        collection_dictionary = {
+            "photo": new_image,
+            "family_members": bio_text
+        }
+
+        self.response.write(login_template.render(front_page_dictionary))
 
 class Timeline(webapp2.RequestHandler):
     def get(self):
@@ -81,8 +103,8 @@ class About(webapp2.RequestHandler):
 
 class Settings(webapp2.RequestHandler):
     def get(self):
-        about_template = JINJA_ENVIRONMENT.get_template('templates/settings.html')
-        self.response.write(about_template.render())
+        settings_template = JINJA_ENVIRONMENT.get_template('templates/settings.html')
+        self.response.write(settings_template.render())
 
 
 config = {}

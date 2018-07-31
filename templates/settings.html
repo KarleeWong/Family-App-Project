@@ -18,7 +18,7 @@
           <h4>Upload Front Image:</h4>
           <input type="input" accept="url" name="url-front" value="http://www.thewolfrock.co.uk/wp-content/uploads/2016/05/placeholder-banner.jpg"/>
           <h4>Change Bio:</h4>
-          <input type="text" name="family-member" value="">
+          <input type="text" name="bio" value="This is my family.">
           <input type="submit" value="Submit"/>
         </div>
       </div>
@@ -39,7 +39,7 @@
       </div>
     </form>
 
-    <form class="center-form" action="" method="post">
+    <form class="center-form" action="/tree" method="post">
       <div>
         <h2>Family Name</h2>
         <div class="inputs">
@@ -50,7 +50,7 @@
       </div>
     </form>
 
-    <form class="center-form" action="" method="post">
+    <form class="center-form" action="/tree" method="post">
       <div class="set-family">
         <h2>Family Members</h2>
         <div class="inputs">
@@ -66,7 +66,22 @@
       </div>
     </form>
 
-    <form class="center-form" action="" method="post">
+    <form class="center-form" action="/timeline" method="post">
+      <div>
+        <h2>Event</h2>
+        <div class="inputs">
+          <h4>Date of Event:</h4>
+          <input type="input" name="event-date"/>
+          <h4>Photo of Event URL:</h4>
+          <input type="input" name="event-photo"/>
+          <h4>Whose in the photo?</h4>
+          <input type="text" name="event-member" value="">
+          <input type="submit" value="Submit"/>
+        </div>
+      </div>
+    </form>
+
+    <!-- <form class="center-form" action="/collection" method="post">
       <div>
         <h2>Album</h2>
         <div class="inputs">
@@ -76,7 +91,7 @@
           <input type="submit" value="Submit Album"/>
         </div>
       </div>
-    </form>
+    </form> -->
 
   </body>
 </html>
