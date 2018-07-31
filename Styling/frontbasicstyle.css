@@ -67,6 +67,11 @@ h1 {
 }
 
 #about {
-    top: 200px;
+    top: 260px;
     background-color: #5d5d5d;
+}
+
+#settings {
+    top: 200px;
+    background-color: #F8E9A1;
 }
