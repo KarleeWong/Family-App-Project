@@ -2,30 +2,51 @@ import webapp2
 import jinja2
 import os
 
+from webapp2_extras import sessions
+
+class BaseHandler(webapp2.RequestHandler):
+    def dispatch(self):
+        self.session_store = sessions.get_store(request=self.request)
+
+        try:
+            # Dispatch the request.
+            webapp2.RequestHandler.dispatch(self)
+        finally:
+            # Save all sessions.
+            self.session_store.save_sessions(self.response)
+
+    @webapp2.cached_property
+    def session(self):
+        # Returns a session using the default cookie key.
+        return self.session_store.get_session()
+
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
 
-class MainPage(webapp2.RequestHandler):
+class MainPage(BaseHandler):
     def get(self):
         login_template = JINJA_ENVIRONMENT.get_template('templates/login.html')
         self.response.write(login_template.render())
 
-    def post(self):
-        login_template = JINJA_ENVIRONMENT.get_template('templates/login.html')
-        self.response.write(login_template.render())
-
-class frontpage(webapp2.RequestHandler):
+class frontpage(BaseHandler):
     def get(self):
+        front_image = self.session.get('teddy')
         frontpage_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
-        self.response.write(frontpage_template.render())
+
+        front_page_dictionary = {
+            "front_image": front_image,
+        }
+
+        self.response.write(frontpage_template.render(front_page_dictionary))
 
     def post(self):
         login_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
 
         front_image = self.request.get('url-front')
+        self.session['teddy'] = front_image
 
         front_page_dictionary = {
             "front_image": front_image,
@@ -40,7 +61,7 @@ class Collection(webapp2.RequestHandler):
 
 class Timeline(webapp2.RequestHandler):
     def get(self):
-        timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
+        timeline_template = JINJA_ENVIRONMENT.get_template('templates/Timeline.html')
         self.response.write(timeline_template.render())
 
 class Tree(webapp2.RequestHandler):
@@ -51,7 +72,7 @@ class Tree(webapp2.RequestHandler):
 class Profile(webapp2.RequestHandler):
     def get(self):
         profile_template = JINJA_ENVIRONMENT.get_template('templates/profile.html')
-        self.response.write(profile_template.render())
+        self.response.write(about_template.render())
 
 class About(webapp2.RequestHandler):
     def get(self):
@@ -60,8 +81,16 @@ class About(webapp2.RequestHandler):
 
 class Settings(webapp2.RequestHandler):
     def get(self):
-        settings_template = JINJA_ENVIRONMENT.get_template('templates/settings.html')
-        self.response.write(settings_template.render())
+        about_template = JINJA_ENVIRONMENT.get_template('templates/settings.html')
+        self.response.write(about_template.render())
+
+
+config = {}
+config['webapp2_extras.sessions'] = {
+    'secret_key': '1234',
+}
+
+
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
@@ -69,7 +98,7 @@ app = webapp2.WSGIApplication([
     ('/collection', Collection),
     ('/timeline', Timeline),
     ('/tree', Tree),
+    ('/about', About),
     ('/profile', Profile),
-    ('/settings', Settings),
-    ('/about', About)
-], debug=True)
+    ('/settings', Settings)
+], debug=True, config=config)
