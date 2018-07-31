@@ -3,20 +3,21 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../Styling/frontbasicstyle.css">
-    <title>Google CSSI Kirkland 2018</title>
+    <title>Bugingo Family</title>
   </head>
 
 
-  <body>
-    <form method="POST" action='/frontpage'></form>
+<body>
+    <form method="POST" action='/frontpage'>
 
     <div id="title">
-      <h1>CSSI 2018 Family</h1>
+      <h1>Bugingo Family</h1>
 
-      <img src="https://au.extremenetworks.com/wp-content/uploads/sites/11/2016/02/placeholder-block.png" alt="Placeholder">
-
+      <img src= "{{ front_image }}" >
+      <input type="input" accept="url" name="url-front" value="http://www.thewolfrock.co.uk/wp-content/uploads/2016/05/placeholder-banner.jpg"/>
+      <input type="submit" value="Upload Your Image"/>
     </div>
-
+    </form>
     <div id="des">
       <p>(Description)</p>
     </div>
@@ -25,6 +26,9 @@
       <a href="/timeline" id="timeline">Timeline</a>
       <a href="/collection" id="collection">Collection</a>
       <a href="/tree" id="tree">Tree</a>
+      <a href="/settings" id="settings">Settings</a>
+      <a href="/about" id="about">About Us</a>
 
     </div>
+  </body>
 </html>

@@ -9,8 +9,9 @@ body {
 }
 
 img {
+  border-radius: 50px;
   width: 100%;
-  hegith: auto;
+  height: auto;
 }
 
 #des {
@@ -26,6 +27,7 @@ p {
 }
 
 h1 {
+  padding: 20px;
   margin: 0px;
   font-size: 48px;
   font-family: helvetica;
@@ -64,7 +66,12 @@ h1 {
     background-color: #99CED3;
 }
 
-#about {
+#settings {
     top: 200px;
+    background-color: #F8E9A1;
+}
+
+#about {
+    top: 260px;
     background-color: #5d5d5d;
 }
