@@ -6,7 +6,7 @@
   color: #66FCF1;
   font-family: impact;
   text-align: center;
-  font-size: 196px;
+  font-size: 96px;
   font-variant: small-caps;
 }
 
@@ -24,8 +24,21 @@
   max-width: 100%;
 }
 
+.us img {
+  
+}
+
 .us-text {
   text-align: center;
+  font-size: 54px;
+  color: #C5C6C7;
+  font-family: impact;
+  font-variant: small-caps;
+}
+
+.us-description {
+  text-align: center;
+  font-size: 36px;
   color: #C5C6C7;
   font-family: impact;
   font-variant: small-caps;
