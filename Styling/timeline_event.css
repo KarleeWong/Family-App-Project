@@ -1,0 +1,34 @@
+.event_name {
+  padding: 10px;
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 54px;
+  color: #86B3D1;
+}
+
+.event_image {
+  display: block;
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+.event_date {
+  margin-top: 0px;
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 14px;
+  color: #374785;
+}
+
+.event_des {
+  color: white;
+  padding: 35px;
+  background-color: #86B3D1;
+  margin-top: 10px;
+  margin-left: 55px;
+  margin-right: 55px;
+  font-family: sans-serif;
+  text-align: center;
+}

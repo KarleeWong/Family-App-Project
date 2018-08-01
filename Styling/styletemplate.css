@@ -1,3 +1,5 @@
+/* about page */
+
 #about {
   background-color: #0B0C10;
 }
@@ -60,15 +62,13 @@ img:hover{
   font-family: sans-serif;
 }
 
-#timeline {
-  background-color: #86B3D1;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-}
+/* body background */
 
 #tree {
-  background-color: #99CED3
+  background-color: #99CED3;
 }
+
+/* collection styling  */
 
 #collection {
   background-color: #EDB5BF;
@@ -92,6 +92,8 @@ img:hover{
   width: 200px;
   height: 200px;
 }
+
+/* settings styling */
 
 #settings {
   background-color: #E8E8E8;
@@ -141,6 +143,8 @@ textarea {
   margin-top: 0px;
 }
 
+/* tabs styling */
+
 h1 {
   font-size: 48px;
 }
@@ -170,11 +174,9 @@ a:hover {
     background-color: #D8C3A5;
 }
 
-#banner-image {
-  margin-top: 20px;
-  margin-bottom: 0px;
-  height: auto;
-  max-width: 100%;
+/* timeline styling */
+#timeline {
+  background-color: #86B3D1;
 }
 
 .date {
@@ -194,7 +196,7 @@ a:hover {
 }
 
 .entry {
-    display:inline-block;
+    display: inline-block;
     vertical-align:top;
     background:#8d99a8;
     color:#fff;
@@ -261,4 +263,17 @@ a:hover {
     letter-spacing:.2em;
     margin-bottom:10px;
     font-size:14px;
+}
+
+.link {
+  left: 0;
+  display: inline-block;
+  vertical-align:top;
+  display: inline-block;
+  position: relative;
+}
+
+.link:hover {
+  left: 0;
+  postion: relative;
 }
