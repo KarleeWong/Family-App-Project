@@ -1,28 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <style>
+      #googleSignIn {
+        float: left;
+        margin: auto;
+        margin-top: 5%;
+        margin-left: 75px;
+        height: 50%;
+      }
+
+      body {
+        background-image: url("https://preview.ibb.co/ia6kQe/Photo_Comp.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      #but {
+        border-radius: 20px;
+      }
+    </style>
+    <link rel="stylesheet" href="/Style/style.css">
     <meta charset="utf-8">
-    <title>Welcome</title>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="/Scripts/script.js"></script>
     <meta name="google-signin-client_id" content="78103231201-60bhtd0co2nf6n68vvfata8ru25c7fmu.apps.googleusercontent.com">
-
-  </head>
-  <body>
-    <a href="#" onclick="signOut();">Sign out</a>
     <script>
-      function signOut() {
-        let auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            // console.log('User signed out.');
-          });
-        }
-      </script>
 
-    <form method="POST" action='/'></form>
-    <form method="POST" action='/frontpage'>
-      <center><div class="g-signin2" data-onsuccess="onSignIn"></div></center>
-      <center><input type="submit" name="Welcome" value="Welcome"></center>
-    </form>
+
+
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        window.location = "http://localhost:8080/frontpage";
+      }
+
+      function onLoad() {
+        gapi.load('auth2', function() {
+          gapi.auth2.init();
+        });
+      }
+    </script>
+  </head>
+  <body id = "background">
+    <div class="">
+    </div>
+      <form method="post" action = "/">
+      <div id="but">
+      <center>
+        <div class="g-signin2" data-onsuccess="onSignIn" id="googleSignIn"></div>
+
+      </center>
+    </div>
+      <br><br>
+    </div>
   </body>
 </html>
