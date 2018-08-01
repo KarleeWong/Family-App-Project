@@ -26,16 +26,15 @@
     <script src="/Scripts/script.js"></script>
     <meta name="google-signin-client_id" content="78103231201-60bhtd0co2nf6n68vvfata8ru25c7fmu.apps.googleusercontent.com">
     <script>
-
-
-
       function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
         console.log('Name: ' + profile.getName());
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        window.location = "http://localhost:8080/frontpage";
+        window.location = "/frontpage";
+        // document.getElementById("id").value = profile.getId();
+        // document.forms[1].submit();
       }
 
       function onLoad() {
@@ -44,18 +43,25 @@
         });
       }
     </script>
+
   </head>
   <body id = "background">
-    <div class="">
+    <div class>
     </div>
-      <form method="post" action = "/">
+      <form method="post" action = "/frontpage">
       <div id="but">
       <center>
         <div class="g-signin2" data-onsuccess="onSignIn" id="googleSignIn"></div>
-
       </center>
-    </div>
-      <br><br>
-    </div>
+      </div>
+<!--
+      </form>
+
+    <!- <form action=“/userinfo method=“post”>
+      <input type=“hidden” id="id" name=“id” value=""> -->
+
+      <!-- <input type="submit" value="Submit"/>
+    </form> -->
+
   </body>
 </html>
