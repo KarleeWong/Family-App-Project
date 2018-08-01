@@ -9,59 +9,35 @@
         display: grid;
         grid-template-columns: 200px 200px 200px 200px 200px 200px 200px 200px 200px;
       }
-      #P1 {
-        background-color: White;
-        border-style: dotted;
+      .familyface img {
         border-radius: 50%;
-        padding: 70px;
-        padding-left: 50px;
-        margin: 10px;
-      }
+        height: 150px;
+        width: 150px;
+        border: 5px solid white;
 
-      #P2 {
-        background-color: aqua;
-        border-style: dotted;
-        border-radius: 50%;
-        padding: 70px;
-        padding-left: 50px;
-        margin: 10px;
-        /* cd = grid-column-start: 1; */
-        /* grid-column-end: ; */
       }
-      #kid1 {
-        background-color: aqua;
-        border-style: dotted;
-        border-radius: 50%;
-        padding: 70px;
-        padding-left: 50px;
-        margin: 10px
+      .familyface p {
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 14px;
+        background-color: white;
+        padding: 6px;
+      }
+      .familyface {
+        justify-content: space-evenly;
+        display: inline-block;
+        float: center;
+        margin-left: auto;
+        margin-right: auto;
 
-        /* grid-column-start: 4;
-        grid-column-end: 4; */
       }
-      #kid2 {
-        background-color: aqua;
-        border-style: dotted;
-        border-radius: 50%;
-        padding: 70px;
-        padding-left: 50px;
+      .layers {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin: 10px;
-      }
-      #kid3 {
-        background-color: aqua;
-        border-style: dotted;
-        border-radius: 50%;
-        padding: 70px;
-        padding-left: 50px;
-        margin: 10px;
-      }
-      #kid4 {
-        background-color: aqua;
-        border-style: dotted;
-        border-radius: 50%;
-        padding: 70px;
-        padding-left: 50px;
-        margin: 10px;
+        margin-bottom: 60px;
       }
     </style>
   </head>
@@ -76,17 +52,123 @@
       Click a person to see their profile.</p>
     </div>
 
-<!-- <style>
-#vertical-line {
-width: 500px;s
-height: 500px;
-background-color: silver
-}
-</style> -->
 
-<div>
+<div class="layers">
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+</div>
+<div class="layers">
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+</div>
+<div class="layers">
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+</div>
+</html>
+
+
+
+<!-- This came from wrapper, from above and this was the first try
+the second part is what builds it. This stuff is css in html. -->
+ <!-- #P1 {
+  background-color: White;
+  border-style: dotted;
+  border-radius: 50%;
+  padding: 70px;
+  padding-left: 50px;
+  margin: 10px;
+}
+.dot {
+  height: 200px;
+  width: 200px;
+  background-color: aqua;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 10px;
+}
+#P2 {
+  background-color: aqua;
+  border-style: dotted;
+  border-radius: 50%;
+  padding: 70px;
+  padding-left: 50px;
+  margin: 10px;
+  cd = grid-column-start: 1;
+  grid-column-end: ;
+ }
+#kid1 {
+  background-color: aqua;
+  border-style: dotted;
+  border-radius: 50%;
+  padding: 70px;
+  padding-left: 50px;
+  margin: 10px */
+
+   grid-column-start: 4;
+  grid-column-end: 4;
+ }
+#kid2 {
+  background-color: aqua;
+  border-style: dotted;
+  border-radius: 50%;
+  padding: 70px;
+  padding-left: 50px;
+  margin: 10px;
+}
+#kid3 {
+  background-color: aqua;
+  border-style: dotted;
+  border-radius: 50%;
+  padding: 70px;
+  padding-left: 50px;
+  margin: 10px;
+}
+#kid4 {
+  background-color: aqua;
+  border-style: dotted;
+  border-radius: 50%;
+  padding: 70px;
+  padding-left: 50px;
+  margin: 10px;
+}   -->
+
+<!-- part 2 -->
+
+<!-- <div>
   <div class="wrapper">
       <h3 id="P1"><center>Parent1</center></h3>
+      <span class="dot"></span>
       <h3 id="P2"><center>Parent2</center></h3>
   </div>
   <div class="wrapper">
@@ -94,7 +176,6 @@ background-color: silver
       <h3 id="kid2"><center>Child2</center></h3>
       <h3 id="kid3"><center>Child3</center></h3>
       <h3 id="kid4"><center>Child4</center></h3>
-      <!-- <h3 style="background-color: aqua">Child4</h3> -->
+      <h3 style="background-color: aqua">Child4</h3>
   </div>
-</div>
-</html>
+</div> -->
