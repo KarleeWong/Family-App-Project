@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<!-- <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script> -->
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../Styling/frontbasicstyle.css">
     <title>Bugingo Family</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="/Scripts/script.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <meta name="google-signin-client_id" content="78103231201-60bhtd0co2nf6n68vvfata8ru25c7fmu.apps.googleusercontent.com">
   </head>
 
-
 <body>
-    <form method="POST" action='/frontpage'>
+    <form method="POST" action='/login'>
+    <a id="signout" href="#" onclick="signOut();">Sign out</a>
+
+      <div class="g-signOut2" data-onsuccess="onSignOut" id="googleSignO"></div>
+
+      <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+              console.log('User signed out.');
+            });
+            window.location = "http://localhost:8080";
+          }
+
+          function onLoad() {
+            gapi.load('auth2', function() {
+              gapi.auth2.init();
+            });
+          }
+
+
+        </script>
 
     <div id="title">
       <h1>{{ family_name }}</h1>

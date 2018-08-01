@@ -4,6 +4,66 @@
     <meta charset="utf-8">
     <title>Family Tree</title>
     <link rel="stylesheet" href="../Styling/styletemplate.css">
+    <style media="screen">
+      .wrapper {
+        display: grid;
+        grid-template-columns: 200px 200px 200px 200px 200px 200px 200px 200px 200px;
+      }
+      #P1 {
+        background-color: White;
+        border-style: dotted;
+        border-radius: 50%;
+        padding: 70px;
+        padding-left: 50px;
+        margin: 10px;
+      }
+
+      #P2 {
+        background-color: aqua;
+        border-style: dotted;
+        border-radius: 50%;
+        padding: 70px;
+        padding-left: 50px;
+        margin: 10px;
+        /* cd = grid-column-start: 1; */
+        /* grid-column-end: ; */
+      }
+      #kid1 {
+        background-color: aqua;
+        border-style: dotted;
+        border-radius: 50%;
+        padding: 70px;
+        padding-left: 50px;
+        margin: 10px
+
+        /* grid-column-start: 4;
+        grid-column-end: 4; */
+      }
+      #kid2 {
+        background-color: aqua;
+        border-style: dotted;
+        border-radius: 50%;
+        padding: 70px;
+        padding-left: 50px;
+        margin: 10px;
+      }
+      #kid3 {
+        background-color: aqua;
+        border-style: dotted;
+        border-radius: 50%;
+        padding: 70px;
+        padding-left: 50px;
+        margin: 10px;
+      }
+      #kid4 {
+        background-color: aqua;
+        border-style: dotted;
+        border-radius: 50%;
+        padding: 70px;
+        padding-left: 50px;
+        margin: 10px;
+      }
+    </style>
   </head>
 
   <body id="tree">
@@ -11,8 +71,30 @@
     <a href="/frontpage" id="frontpage">Home</a>
 
     <div class="title">
-      <h1 class="title-text">My Family Tree</h1>
+      <h1 id="tree2" class="title-text">My Family Tree</h1>
       <p class="title-text">Welcome to the family tree! <br>
       Click a person to see their profile.</p>
     </div>
+
+<!-- <style>
+#vertical-line {
+width: 500px;s
+height: 500px;
+background-color: silver
+}
+</style> -->
+
+<div>
+  <div class="wrapper">
+      <h3 id="P1"><center>Parent1</center></h3>
+      <h3 id="P2"><center>Parent2</center></h3>
+  </div>
+  <div class="wrapper">
+      <h3 id="kid1"><center>Child1</center></h3>
+      <h3 id="kid2"><center>Child2</center></h3>
+      <h3 id="kid3"><center>Child3</center></h3>
+      <h3 id="kid4"><center>Child4</center></h3>
+      <!-- <h3 style="background-color: aqua">Child4</h3> -->
+  </div>
+</div>
 </html>
