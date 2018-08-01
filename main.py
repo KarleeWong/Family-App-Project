@@ -151,7 +151,7 @@ class Tree(webapp2.RequestHandler):
 class Profile(webapp2.RequestHandler):
     def get(self):
         profile_template = JINJA_ENVIRONMENT.get_template('templates/profile.html')
-        self.response.write(about_template.render())
+        self.response.write(profile_template.render())
 
 class About(webapp2.RequestHandler):
     def get(self):
