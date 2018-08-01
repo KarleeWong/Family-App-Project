@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../Styling/styletemplate.css">
   </head>
 
-  <form method="POST" action='/collection'></form>
     <body id="collection">
 
       <a href="/frontpage" id="frontpage">Home</a>
@@ -14,5 +13,12 @@
       <div class="title">
         <h1 class="title-text">My Collection</h1>
       </div>
+
+      {% for set in new_images: %}
+      <div class="collection_outline">
+        <img class="collection_pictures" src="{{ set.picture }}" alt=""><br>
+        <p>{{ set.description }}</p>
+      </div>
+      {% endfor %}
 
 </html>

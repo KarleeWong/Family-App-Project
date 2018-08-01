@@ -5,6 +5,7 @@ import os
 from webapp2_extras import sessions
 
 class BaseHandler(webapp2.RequestHandler):
+
     def dispatch(self):
         self.session_store = sessions.get_store(request=self.request)
 
@@ -25,6 +26,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+new_images = []
 
 class MainPage(BaseHandler):
     def get(self):
@@ -34,10 +36,15 @@ class MainPage(BaseHandler):
 class frontpage(BaseHandler):
     def get(self):
         front_image = self.session.get('teddy')
+        bio_text = self.session.get('family-message')
+        family_name = self.session.get('familyName')
+
         frontpage_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
 
         front_page_dictionary = {
             "front_image": front_image,
+            "bio_text": bio_text,
+            "family_name": family_name
         }
 
         self.response.write(frontpage_template.render(front_page_dictionary))
@@ -48,16 +55,56 @@ class frontpage(BaseHandler):
         front_image = self.request.get('url-front')
         self.session['teddy'] = front_image
 
+        bio_text = self.request.get('bio')
+        self.session['family-message'] = bio_text
+
+        family_name = self.request.get('family-name')
+        self.session['familyName'] = family_name
+
         front_page_dictionary = {
             "front_image": front_image,
+            "bio_text": bio_text,
+            "family_name": family_name
         }
 
         self.response.write(login_template.render(front_page_dictionary))
 
-class Collection(webapp2.RequestHandler):
+class Collection(BaseHandler):
     def get(self):
         collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
-        self.response.write(collection_template.render())
+
+        new_images = self.session.get('new_images')
+        family_members = self.session.get('family-members-photo')
+
+        collection_dictionary = {
+            "new_images": new_images,
+        }
+
+        self.response.write(collection_template.render(collection_dictionary))
+
+    def post(self):
+        collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
+
+        set = {
+            'picture': self.request.get('add-image'),
+            'description': self.request.get('family-member')
+        }
+
+        if self.session.get("new_images") is None:
+            self.session["new_images"] = []
+
+        self.session.get("new_images").append(set)
+
+        # self.session['photo'] = new_images
+        #
+        # family_members = self.request.get('family-member')
+        # self.session['family-members-photo'] = family_members
+
+        images_descriptions = {
+            "new_images": self.session.get("new_images")
+        }
+
+        self.response.write(collection_template.render(images_descriptions))
 
 class Timeline(webapp2.RequestHandler):
     def get(self):
@@ -81,8 +128,8 @@ class About(webapp2.RequestHandler):
 
 class Settings(webapp2.RequestHandler):
     def get(self):
-        about_template = JINJA_ENVIRONMENT.get_template('templates/settings.html')
-        self.response.write(about_template.render())
+        settings_template = JINJA_ENVIRONMENT.get_template('templates/settings.html')
+        self.response.write(settings_template.render())
 
 
 config = {}
