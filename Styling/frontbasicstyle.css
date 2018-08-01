@@ -3,6 +3,7 @@ body {
 }
 
 #signout {
+  top: 25px;
   position: absolute; /* Position them relative to the browser window */
   right: -100px; /* Position them outside of the screen */
   transition: 0.3s; /* Add transition on hover */
