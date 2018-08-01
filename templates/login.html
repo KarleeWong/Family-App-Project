@@ -3,21 +3,48 @@
   <head>
     <style>
       #googleSignIn {
-        float: left;
-        margin: auto;
-        margin-top: 5%;
-        margin-left: 75px;
-        height: 50%;
+        padding-top: 15px;
+        padding-bottom: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
       }
 
       body {
-        background-image: url("https://preview.ibb.co/ia6kQe/Photo_Comp.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-color: #77A6F7;
       }
+
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 200px;
+        width: 300px;
+
+      }
+
+      h1 {
+
+        margin:0px;
+        color: #00887A;
+        padding: 25px;
+        font-size: 96px;
+        font-family: sans-serif;
+        text-align: center;
+      }
+
 
       #but {
         border-radius: 20px;
+      }
+      .cover {
+        border-radius: 10%;
+        background-color: white;
+        float: center;
+        margin-top: 10%;
+        margin-right: 20%;
+        margin-left: 20%;
+        height: 500px;
+        width: 800px;
       }
     </style>
     <link rel="stylesheet" href="/Style/style.css">
@@ -46,16 +73,21 @@
     </script>
   </head>
   <body id = "background">
-    <div class="">
-    </div>
-      <form method="post" action = "/">
-      <div id="but">
-      <center>
-        <div class="g-signin2" data-onsuccess="onSignIn" id="googleSignIn"></div>
 
-      </center>
-    </div>
-      <br><br>
-    </div>
+  <div class="cover">
+
+    <h1>FamDoc</h1>
+    <img src="https://preview.ibb.co/cRKdfe/Untitled_design.png" alt="">
+
+    <form method="post" action = "/">
+      <div id="but">
+        <center>
+          <div class="g-signin2" data-onsuccess="onSignIn" id="googleSignIn"></div>
+        </center>
+      </div>
+    </form>
+
+  </div>
+
   </body>
 </html>
