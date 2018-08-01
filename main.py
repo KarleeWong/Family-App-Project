@@ -5,6 +5,7 @@ import os
 from webapp2_extras import sessions
 
 class BaseHandler(webapp2.RequestHandler):
+
     def dispatch(self):
         self.session_store = sessions.get_store(request=self.request)
 
@@ -25,6 +26,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+new_images = []
 
 class MainPage(BaseHandler):
     def get(self):
@@ -71,12 +73,11 @@ class Collection(BaseHandler):
     def get(self):
         collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
 
-        new_image = self.session.get('photo')
+        new_images = self.session.get('new_images')
         family_members = self.session.get('family-members-photo')
 
         collection_dictionary = {
-            "new_image": new_image,
-            "family_members": family_members
+            "new_images": new_images,
         }
 
         self.response.write(collection_template.render(collection_dictionary))
@@ -84,18 +85,26 @@ class Collection(BaseHandler):
     def post(self):
         collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
 
-        new_image = self.request.get('add-image')
-        self.session['photo'] = new_image
-
-        family_members = self.request.get('family-member')
-        self.session['family-members-photo'] = family_members
-
-        collection_dictionary = {
-            "new_image": new_image,
-            "family_members": family_members
+        set = {
+            'picture': self.request.get('add-image'),
+            'description': self.request.get('family-member')
         }
 
-        self.response.write(collection_template.render(collection_dictionary))
+        if self.session.get("new_images") is None:
+            self.session["new_images"] = []
+
+        self.session.get("new_images").append(set)
+
+        # self.session['photo'] = new_images
+        #
+        # family_members = self.request.get('family-member')
+        # self.session['family-members-photo'] = family_members
+
+        images_descriptions = {
+            "new_images": self.session.get("new_images")
+        }
+
+        self.response.write(collection_template.render(images_descriptions))
 
 class Timeline(webapp2.RequestHandler):
     def get(self):
