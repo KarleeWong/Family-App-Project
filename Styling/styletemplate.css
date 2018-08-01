@@ -207,6 +207,12 @@ a:hover {
     max-width:100px;
 }
 
+.entry:hover {
+  padding: 10px;
+  background-color: #4c5768;
+  -webkit-box-shadow: inset 5px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
 .entry img {
     display:block;
     max-width:100%;
@@ -255,12 +261,3 @@ a:hover {
     margin-bottom:10px;
     font-size:14px;
 }
-
-.bar {
-    height:4px;
-    background:#fff;
-    width:100%;
-    position:relative;
-    top:13px;
-    left:0;
-}s
