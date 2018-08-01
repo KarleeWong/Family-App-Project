@@ -106,10 +106,39 @@ class Collection(BaseHandler):
 
         self.response.write(collection_template.render(images_descriptions))
 
-class Timeline(webapp2.RequestHandler):
+class Timeline(BaseHandler):
     def get(self):
-        timeline_template = JINJA_ENVIRONMENT.get_template('templates/Timeline.html')
-        self.response.write(timeline_template.render())
+        timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
+
+        entries = self.session.get('entries')
+
+        timeline_dictionary = {
+            "entries": entries,
+        }
+
+        self.response.write(timeline_template.render(timeline_dictionary))
+
+    def post(self):
+        timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
+
+        entry = {
+            'date': self.request.get('event-date'),
+            'name': self.request.get('event-name'),
+            'photo': self.request.get('event-photo'),
+            'member': self.request.get('event-member'),
+            'des': self.request.get('event-des'),
+        }
+
+        if self.session.get("entries") is None:
+            self.session["entries"] = []
+
+        self.session.get("entries").append(entry)
+        
+        entry_dictionary = {
+            "entries": self.session.get("entry")
+        }
+
+        self.response.write(timeline_template.render(entry_dictionary))
 
 class Tree(webapp2.RequestHandler):
     def get(self):
