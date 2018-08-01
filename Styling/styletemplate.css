@@ -6,7 +6,7 @@
   color: #66FCF1;
   font-family: impact;
   text-align: center;
-  font-size: 196px;
+  font-size: 96px;
   font-variant: small-caps;
 }
 
@@ -22,10 +22,40 @@
   margin: 10px;
   width: 30%;
   max-width: 100%;
+  border-radius: 5%;
+}
+
+.us img {
+  padding: 15px;
+  border-radius: 50%;
+  margin: 25px;
+  border: 2px solid #45A29E;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  height: 250px;
+}
+
+img:hover{
+  border-color: #66FCF1;
+  outline: 0;
+  -webkit-box-shadow: inset 5px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 5px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
 .us-text {
+  border: inset;
   text-align: center;
+  font-size: 48px;
+  color: #66FCF1;
+  font-family: impact;
+  font-variant: small-caps;
+}
+
+.us-description {
+  text-align: center;
+  font-size: 24px;
   color: #C5C6C7;
   font-family: impact;
   font-variant: small-caps;
@@ -43,6 +73,25 @@
 
 #collection {
   background-color: #EDB5BF;
+}
+
+.collection_outline {
+  margin: 1px;
+  background-color: white;
+  display: inline-block;
+}
+
+.collection_outline p {
+  margin: 0px;
+  font-family: sans-serif;
+  font-variant: small-caps;
+  font-size: 20px;
+  text-align: center;
+}
+
+.collection_pictures {
+  width: 200px;
+  height: 200px;
 }
 
 #settings {
