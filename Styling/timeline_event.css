@@ -1,3 +1,8 @@
+#timeline_event {
+  background-color: white;
+  margin: 0px;
+}
+
 .event_name {
   padding: 10px;
   font-family: sans-serif;
