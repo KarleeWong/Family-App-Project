@@ -6,15 +6,17 @@ body {
   position: absolute; /* Position them relative to the browser window */
   right: -100px; /* Position them outside of the screen */
   transition: 0.3s; /* Add transition on hover */
-  padding: 15px; /* 15px padding */
+  padding: 25px; /* 15px padding */
   width: 100px; /* Set a specific width */
   text-decoration: none; /* Remove underline */
   font-size: 20px; /* Increase font size */
+  text-align: right;
   color: white; /* White text color */
   border-radius: 5px 0px 0px 5px;
   background-color: #ff3842;
   color: white;
 }
+
 #signout:hover {
     right: 0;
     background-color: #ff1000;
