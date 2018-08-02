@@ -267,14 +267,6 @@ app = webapp2.WSGIApplication([
     ('/tree', Tree),
     ('/about', About),
     ('/profile', Profile),
-<<<<<<< HEAD
-    # ('/userinfo', User_info),
-    ('/settings', Settings),
-    # ('/', PhotoUploadFormHandler),
-    # ('/upload_photo', PhotoUploadHandler),
-    # ('/view_photo/([^/]+)?', ViewPhotoHandler),
-=======
     ('/timeline-event', TimelineEvent),
     ('/settings', Settings)
->>>>>>> Karlee
 ], debug=True, config=config)
