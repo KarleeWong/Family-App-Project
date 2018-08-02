@@ -86,7 +86,16 @@ class Collection(BaseHandler):
     def get(self):
         if self.session.get("all_images") is None:
             collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
-            self.response.write(collection_template.render())
+            all_images = []
+            set = {
+                'picture': "https://i1.wp.com/www.gogreenexpo.co.nz/wp-content/uploads/2017/02/a-directory-placeholder.jpg",
+                'description': "My Picture"
+            }
+            all_images.append(set)
+            collection_dictionary = {
+                "all_images": "all_images"
+            }
+            self.response.write(collection_template.render(collection_dictionary))
         else:
             all_images = self.session.get('all_images')
             collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
@@ -207,12 +216,30 @@ class TimelineEvent(BaseHandler):
 
 class Tree(BaseHandler):
     def get(self):
-        tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
-
+        if self.session.get("tree-layer") is 0:
+            tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
+            orgin = {
+            "layers":int(1),
+            "name": "Me",
+            "tree_pic":"http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg",
+            "description": "That's me! :)"
+            }
+            self.response.write(tree_template.render(orgin))
+        if self.session.get("family-member-name") is None:
+            tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
+            orgin = {
+                "layers":int(self.request.get("tree-layer")),
+                "name": "Me",
+                "tree_pic":"http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg",
+                "description": "That's me! :)"
+            }
+            self.response.write(tree_template.render(orgin))
         tree_dictionary = {
-            "layers": int(self.session.get("tree-layer"))
+            "layers": int(self.request.get("tree-layer")),
+            "name": self.request.get("family-member-name"),
+            "tree_pic": self.request.get("family-member-pic"),
+            "description": self.request.get("family-member-des")
         }
-
         self.response.write(tree_template.render(tree_dictionary))
 
     def post(self):
@@ -220,10 +247,16 @@ class Tree(BaseHandler):
 
         self.redirect('/tree')
 
-class Profile(webapp2.RequestHandler):
+class Profile(BaseHandler):
     def get(self):
         profile_template = JINJA_ENVIRONMENT.get_template('templates/profile.html')
-        self.response.write(profile_template.render())
+        orgin = {
+            "layers":int(1),
+            "name": "Me",
+            "tree_pic":"https://www.f6s.com/images/profile-placeholder-user.jpg",
+            "description": "That's me! :)"
+        }
+        self.response.write(profile_template.render(orgin))
 
 class About(webapp2.RequestHandler):
     def get(self):
