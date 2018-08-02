@@ -96,7 +96,7 @@ class Collection(BaseHandler):
         if self.session.get("all_images") is None:
             self.session["all_images"] = []
 
-        self.session.get("all_images").append(set)
+        self.session["all_images"] += [set]
 
         self.redirect('/collection')
 
