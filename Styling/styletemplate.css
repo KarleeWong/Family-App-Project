@@ -75,7 +75,8 @@ img:hover{
 }
 
 .collection_outline {
-  margin: 1px;
+  margin: 15px;
+  padding: 10px;
   background-color: white;
   display: inline-block;
 }

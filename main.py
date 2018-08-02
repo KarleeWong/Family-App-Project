@@ -139,6 +139,11 @@ class Timeline(BaseHandler):
 
         self.response.write(timeline_template.render())
 
+class TimelineEvent(BaseHandler):
+    def get(self):
+        timeline_event_template = JINJA_ENVIRONMENT.get_template('templates/timeline_event.html')
+        self.response.write(timeline_event_template.render())
+
 class Tree(webapp2.RequestHandler):
     def get(self):
         tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
@@ -175,5 +180,6 @@ app = webapp2.WSGIApplication([
     ('/tree', Tree),
     ('/about', About),
     ('/profile', Profile),
+    ('/timeline-event', TimelineEvent),
     ('/settings', Settings)
 ], debug=True, config=config)
