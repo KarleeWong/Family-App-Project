@@ -9,7 +9,7 @@
 
   <body id="settings">
 
-    <a href="/frontpage" id="frontpage">Home</a>
+    <a class="tab" href="/frontpage" id="frontpage">Home</a>
 
     <form class="center-form" action="/frontpage" method="post">
       <div>
@@ -32,11 +32,20 @@
         <div class="inputs">
           <h4>Upload More Pictures to you collection:</h4>
           <input type="input" accept="url" name="add-image"/>
-          <h4>Who is in the photo?</h4>
-          <input type="text" name="family-member" value="">
-          <h4>Add to Album:</h4>
-          <input type="text" name="album-name" value=""><br>
+          <h4>Description of Picture:</h4>
+          <input type="text" name="family-member" value=""><br>
           <input type="submit" value="Submit"/>
+        </div>
+      </div>
+    </form>
+
+    <form class="center-form" action="/tree" method="post">
+      <div class="family-tree-info">
+        <h2>Set Up Family Tree</h2>
+        <div class="inputs">
+          <h4>How Many Layers are in the Tree?</h4>
+          <input type="number" name="layer-num" value="">
+          <input type="submit" value="Submit Changes"/>
         </div>
       </div>
     </form>
@@ -47,13 +56,11 @@
         <div class="inputs">
           <h3>Add Family Member</h3></td>
           <h4>Name:</h4></td>
-          <input type="text" name="family-member-name" value="">
+          <input type="text" name="family-member-name" value="Me">
           <h4>Picture of Family Member:</h4>
-          <input type="input" accept="url" name="family-member-pic"/>
+          <input type="input" accept="url" name="family-member-pic" value="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
           <h4>Description:</h4>
-          <textarea name="family-member-des" value=""></textarea>
-          <h3>Family Members Added:</h3>
-          <h4>FAMILY MEMBERS HERE</p>
+          <textarea name="family-member-des" value="That's Me!"></textarea><br>
           <input type="submit" value="Submit Changes"/>
         </div>
       </div>
@@ -64,11 +71,13 @@
         <h2>Event</h2>
         <div class="inputs">
           <h4>Date of Event:</h4>
-          <input type="input" name="event-date"/>
+          <input type="text" name="event-date"/>
           <h4>Name of Event:</h4>
-          <input type="input" name="event-name"/>
+          <input type="text" name="event-name"/>
+          <h4>Description of Event:</h4>
+          <input type="text" name="event-des"/>
           <h4>Photo of Event URL:</h4>
-          <input type="input" name="event-photo"/><br>
+          <input type="text" name="event-photo"/><br>
           <input type="submit" value="Submit"/>
         </div>
       </div>

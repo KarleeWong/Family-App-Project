@@ -8,17 +8,17 @@
 
     <body id="collection">
 
-      <a href="/frontpage" id="frontpage">Home</a>
+      <a class="tab" href="/frontpage" id="frontpage">Home</a>
 
       <div class="title">
         <h1 class="title-text">My Collection</h1>
       </div>
 
-      {% for images in all_images %}
-      <div class="picture collection_outline">
-        <img class="description collection_pictures" src="{{ images.image_url }}" alt=""><br>
-        <p>{{ images.description }}</p>
-      </div>
+      {% for one_set in all_images %}
+        <div class="collection_outline">
+          <img class="collection_pictures" src="{{ one_set.picture }}"/><br>
+          <p>{{ one_set.description }}</p>
+        </div>
       {% endfor %}
 
 </html>

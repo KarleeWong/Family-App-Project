@@ -4,18 +4,24 @@
     <meta charset="utf-8">
     <title>Profile</title>
     <link rel="stylesheet" href="../Styling/profile.css">
+    <style media="screen">
+
+      #profile-pic{
+        border-radius: 0%;
+      }
+    </style>
   </head>
   <body>
     <div>
-      <h2>Name</h2>
-      <img id="profile-pic" src="https://www.f6s.com/images/profile-placeholder-user.jpg" alt="Person">
+      <h2>{{name}}</h2>
+      <img id="profile-pic" src="{{tree_pic}}" alt="Person">
     </div>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>{{description}}</p>
 
     <div>
-      <a href="/frontpage" id="frontpage">Home</a>
-      <a href="/tree" id="tree">Tree</a>
+      <a class="tab" href="/frontpage" id="frontpage">Home</a>
+      <a class="tab" href="/tree" id="tree">Tree</a>
     </div>
 
   </body>

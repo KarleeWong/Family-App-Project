@@ -10,7 +10,7 @@
 
     <body id="timeline">
 
-      <a href="/frontpage" id="frontpage">Home</a>
+      <a class="tab" href="/frontpage" id="frontpage">Home</a>
 
       <div class="title">
         <h1 class="title-text">Timeline</h1>
@@ -18,15 +18,21 @@
 
   <div class="timeline">
 
-    <a class="link" href="../templates/timeline_event.html">
-      <div class="entry">
-        <h1>Day 02</h1>
-        <h2>Entry Title</h2>
-          <img src="https://i2.wp.com/www.newsdouga.net/wp/wp-content/uploads/2017/12/unnamed-file-54.jpg"/>
-      </div>
-    </a>
+    {% set i = 0%}
+    {% for entry in entries %}
 
-    <a class="link" href="../templates/timeline_event.html">
+      <a class="link" name="" href="/timeline-event?id={{i}}">
+        <div class="entry">
+          <h1>{{ entry.date }}</h1>
+          <h2>{{ entry.name }}</h2>
+            <img src="{{ entry.photo}}"/>
+        </div>
+      </a>
+
+      {% set i = i + 1 %}
+    {% endfor %}
+
+    <!-- <a class="link" href="/timeline-event">
       <div class="entry">
         <h1>Day 03</h1>
         <h2>Entry Title</h2>
@@ -34,7 +40,7 @@
       </div>
     </a>
 
-    <a class="link" href="../templates/timeline_event.html">
+    <a class="link" href="/timeline-event">
       <div class="entry">
         <h1>Day 04</h1>
         <h2>Entry Title</h2>
@@ -42,13 +48,13 @@
       </div>
     </a>
 
-    <a class="link" href="../templates/timeline_event.html">
+    <a class="link" href="/timeline-event">
       <div class="entry">
         <h1>Day 05</h1>
         <h2>Entry Title</h2>
           <img src="http://dummyimage.com/300x200/000/fff"/>
       </div>
-    </a>
+    </a> -->
 
 
 </div>

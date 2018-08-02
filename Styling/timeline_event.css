@@ -1,6 +1,8 @@
 #timeline_event {
   background-color: white;
-  margin: 0px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  padding: 20px;
 }
 
 .event_name {

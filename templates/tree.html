@@ -36,15 +36,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 10px;
-        margin-bottom: 60px;
+        margin: 35px;
+        margin-bottom: 50px;
       }
     </style>
   </head>
 
   <body id="tree">
 
-    <a href="/frontpage" id="frontpage">Home</a>
+    <a class="tab" href="/frontpage" id="frontpage">Home</a>
 
     <div class="title">
       <h1 id="tree2" class="title-text">My Family Tree</h1>
@@ -52,49 +52,19 @@
       Click a person to see their profile.</p>
     </div>
 
+{% for layer in range(layers) %}
+  <div class="layers">
 
-<div class="layers">
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
+    <div class="familyface">
+      <a href="/profile">
+        <img id="pro" src="{{tree_pic}}"/>
+      </a>
+      <p> {{name}} </p>
+    </div>
+
   </div>
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-</div>
-<div class="layers">
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-</div>
-<div class="layers">
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-</div>
+{% endfor %}
+
 </html>
 
 
