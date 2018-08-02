@@ -62,10 +62,22 @@ img:hover{
   font-family: sans-serif;
 }
 
-/* body background */
+/* tree background */
 
 #tree {
   background-color: #99CED3;
+}
+
+#pro {
+  left: 0;
+  display: inline-block;
+  vertical-align:top;
+  display: inline-block;
+  position: relative;
+}
+
+#pro:hover {
+  left:0;
 }
 
 /* collection styling  */
@@ -184,7 +196,7 @@ p {
   font-size: 12px;
 }
 
-a {
+.tab {
     position: absolute; /* Position them relative to the browser window */
     left: -100px; /* Position them outside of the screen */
     transition: 0.3s; /* Add transition on hover */
@@ -196,7 +208,7 @@ a {
     border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
 }
 
-a:hover {
+.tab:hover {
     left: 0; /* On mouse-over, make the elements appear as they should */
 }
 
@@ -307,5 +319,5 @@ a:hover {
 
 .link:hover {
   left: 0;
-  postion: relative;
+
 }

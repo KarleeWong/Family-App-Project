@@ -116,7 +116,8 @@ class Timeline(BaseHandler):
             timeline_dictionary = {
                 "entries": entries,
                 }
-
+            print("This is the timeline dictionary:")
+            print(timeline_dictionary)
             self.response.write(timeline_template.render(timeline_dictionary))
 
     def post(self):
@@ -135,7 +136,7 @@ class Timeline(BaseHandler):
 
         list_of_entries = self.session.get("entries")
 
-        list_of_entries.append(entry)
+        self.session["entries"] = list_of_entries + [entry]
 
         self.redirect('/timeline')
 
@@ -143,9 +144,12 @@ class TimelineEvent(BaseHandler):
     def get(self):
         timeline_event_template = JINJA_ENVIRONMENT.get_template('templates/timeline_event.html')
         entries = self.session.get('entries')
+        print("THIS IS YOUR ID:")
+        print(self.request.get("id"))
         timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
         timeline_dictionary = {
-            "entries": entries,
+            "entry": entries[int(self.request.get("id"))],
+            "entries": entries
             }
         self.response.write(timeline_event_template.render(timeline_dictionary))
 

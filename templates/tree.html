@@ -44,7 +44,7 @@
 
   <body id="tree">
 
-    <a href="/frontpage" id="frontpage">Home</a>
+    <a class="tab" href="/frontpage" id="frontpage">Home</a>
 
     <div class="title">
       <h1 id="tree2" class="title-text">My Family Tree</h1>
@@ -55,7 +55,9 @@
 {% for layer in range(layers) %}
   <div class="layers">
     <div class="familyface">
-      <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+      <a href="/profile">
+        <img id="pro" src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+      </a>
       <p> name </p>
     </div>
     <!-- <div class="familyface">

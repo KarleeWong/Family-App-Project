@@ -10,7 +10,7 @@
 
     <body id="timeline">
 
-      <a href="/frontpage" id="frontpage">Home</a>
+      <a class="tab" href="/frontpage" id="frontpage">Home</a>
 
       <div class="title">
         <h1 class="title-text">Timeline</h1>
@@ -18,14 +18,18 @@
 
   <div class="timeline">
 
+    {% set i = 0%}
     {% for entry in entries %}
-      <a class="link" href="/timeline-event">
+
+      <a class="link" name="" href="/timeline-event?id={{i}}">
         <div class="entry">
           <h1>{{ entry.date }}</h1>
           <h2>{{ entry.name }}</h2>
-            <img src="{{ entry.photo }}"/>
+            <img src="{{ entry.photo}}"/>
         </div>
       </a>
+
+      {% set i = i + 1 %}
     {% endfor %}
 
     <!-- <a class="link" href="/timeline-event">
