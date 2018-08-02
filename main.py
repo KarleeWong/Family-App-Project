@@ -71,83 +71,98 @@ class frontpage(BaseHandler):
 
 class Collection(BaseHandler):
     def get(self):
-        collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
+        if self.session.get("all_images") is None:
+            collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
+            self.response.write(collection_template.render())
+        else:
+            all_images = self.session.get('all_images')
+            collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
+            collection_dictionary = {
+                "all_images": all_images,
+                }
 
-        new_images = self.session.get('new_images')
-        family_members = self.session.get('family-members-photo')
-
-        collection_dictionary = {
-            "new_images": new_images,
-        }
-
-        self.response.write(collection_template.render(collection_dictionary))
+            self.response.write(collection_template.render(collection_dictionary))
 
     def post(self):
         collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
+        picture = self.request.get('add-image')
+        description = self.request.get('family-member')
 
         set = {
-            'picture': self.request.get('add-image'),
-            'description': self.request.get('family-member')
+            'picture': picture,
+            'description': description
         }
 
-        if self.session.get("new_images") is None:
-            self.session["new_images"] = []
+        if self.session.get("all_images") is None:
+            self.session["all_images"] = []
 
-        self.session.get("new_images").append(set)
-
-        # self.session['photo'] = new_images
-        #
-        # family_members = self.request.get('family-member')
-        # self.session['family-members-photo'] = family_members
+        self.session.get("all_images").append(set)
 
         self.redirect('/collection')
 
 class Timeline(BaseHandler):
     def get(self):
-        timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
+        if self.session.get("entries") is None:
+            timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
+            timeline_dictionary = {
+                "date": "Event Date",
+                "name": "Event Name",
+                "photo": "https://cortescoop.ca/wp-content/themes/gecko/assets/images/placeholder.png",
+                }
+            self.response.write(timeline_template.render(timeline_dictionary))
+        else:
+            entries = self.session.get('entries')
+            timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
+            timeline_dictionary = {
+                "entries": entries,
+                }
 
-        # entries = self.session.get('entries')
-        #
-        # timeline_dictionary = {
-        #     "entries": entries,
-        # }
-        #
-        # self.response.write(timeline_template.render(timeline_dictionary))
-        self.response.write(timeline_template.render())
+            self.response.write(timeline_template.render(timeline_dictionary))
 
     def post(self):
         timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
 
-        # entry = {
-        #     'date': self.request.get('event-date'),
-        #     'name': self.request.get('event-name'),
-        #     'photo': self.request.get('event-photo'),
-        #     'member': self.request.get('event-member'),
-        #     'des': self.request.get('event-des'),
-        # }
-        #
-        # if self.session.get("entries") is None:
-        #     self.session["entries"] = []
-        #
-        # self.session.get("entries").append(entry)
-        #
-        # entry_dictionary = {
-        #     "entries": self.session.get("entry")
-        # }
-        #
-        # self.response.write(timeline_template.render(entry_dictionary))
+        entry = {
+            'date': self.request.get('event-date'),
+            'name': self.request.get('event-name'),
+            'photo': self.request.get('event-photo'),
+            'member': self.request.get('event-member'),
+            'des': self.request.get('event-des'),
+        }
 
-        self.response.write(timeline_template.render())
+        if self.session.get("entries") is None:
+            self.session["entries"] = []
+
+        list_of_entries = self.session.get("entries")
+
+        list_of_entries.append(entry)
+
+        self.redirect('/timeline')
 
 class TimelineEvent(BaseHandler):
     def get(self):
         timeline_event_template = JINJA_ENVIRONMENT.get_template('templates/timeline_event.html')
-        self.response.write(timeline_event_template.render())
+        entries = self.session.get('entries')
+        timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
+        timeline_dictionary = {
+            "entries": entries,
+            }
+        self.response.write(timeline_event_template.render(timeline_dictionary))
 
-class Tree(webapp2.RequestHandler):
+class Tree(BaseHandler):
     def get(self):
         tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
-        self.response.write(tree_template.render())
+
+        tree_dictionary = {
+            "layers": int(self.session.get("tree-layer"))
+        }
+
+        self.response.write(tree_template.render(tree_dictionary))
+
+    def post(self):
+        self.session["tree-layer"] = self.request.get("layer-num")
+
+        self.redirect('/tree')
 
 class Profile(webapp2.RequestHandler):
     def get(self):

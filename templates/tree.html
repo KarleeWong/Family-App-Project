@@ -36,8 +36,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 10px;
-        margin-bottom: 60px;
+        margin: 35px;
+        margin-bottom: 50px;
       }
     </style>
   </head>
@@ -52,6 +52,33 @@
       Click a person to see their profile.</p>
     </div>
 
+{% for layer in range(layers) %}
+  <div class="layers">
+    <div class="familyface">
+      <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+      <p> name </p>
+    </div>
+    <!-- <div class="familyface">
+      <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+      <p> name </p>
+    </div> -->
+  </div>
+{% endfor %}
+
+<!-- <div class="layers">
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+  <div class="familyface">
+    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
+    <p> name </p>
+  </div>
+</div>
 
 <div class="layers">
   <div class="familyface">
@@ -62,8 +89,6 @@
     <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
     <p> name </p>
   </div>
-</div>
-<div class="layers">
   <div class="familyface">
     <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
     <p> name </p>
@@ -72,29 +97,7 @@
     <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
     <p> name </p>
   </div>
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-</div>
-<div class="layers">
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-  <div class="familyface">
-    <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg"/>
-    <p> name </p>
-  </div>
-</div>
+</div> -->
 </html>
 
 

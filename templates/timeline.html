@@ -18,15 +18,17 @@
 
   <div class="timeline">
 
-    <a class="link" href="/timeline-event">
-      <div class="entry">
-        <h1>Day 02</h1>
-        <h2>Entry Title</h2>
-          <img src="https://i2.wp.com/www.newsdouga.net/wp/wp-content/uploads/2017/12/unnamed-file-54.jpg"/>
-      </div>
-    </a>
+    {% for entry in entries %}
+      <a class="link" href="/timeline-event">
+        <div class="entry">
+          <h1>{{ entry.date }}</h1>
+          <h2>{{ entry.name }}</h2>
+            <img src="{{ entry.photo }}"/>
+        </div>
+      </a>
+    {% endfor %}
 
-    <a class="link" href="/timeline-event">
+    <!-- <a class="link" href="/timeline-event">
       <div class="entry">
         <h1>Day 03</h1>
         <h2>Entry Title</h2>
@@ -48,7 +50,7 @@
         <h2>Entry Title</h2>
           <img src="http://dummyimage.com/300x200/000/fff"/>
       </div>
-    </a>
+    </a> -->
 
 
 </div>

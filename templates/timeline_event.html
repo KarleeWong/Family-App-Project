@@ -18,44 +18,21 @@
 
 <div class="timeline">
 
-  <a class="link" href="/timeline-event">
-    <div class="entry">
-      <h1>Day 02</h1>
-      <h2>Entry Title</h2>
-        <img src="https://i2.wp.com/www.newsdouga.net/wp/wp-content/uploads/2017/12/unnamed-file-54.jpg"/>
-    </div>
-  </a>
-
-  <a class="link" href="/timeline-event">
-    <div class="entry">
-      <h1>Day 03</h1>
-      <h2>Entry Title</h2>
-        <img src="http://dummyimage.com/300x200/000/fff"/>
-    </div>
-  </a>
-
-  <a class="link" href="/timeline-event">
-    <div class="entry">
-      <h1>Day 04</h1>
-      <h2>Entry Title</h2>
-        <img src="http://dummyimage.com/300x200/000/fff"/>
-    </div>
-  </a>
-
-  <a class="link" href="/timeline-event">
-    <div class="entry">
-      <h1>Day 05</h1>
-      <h2>Entry Title</h2>
-        <img src="http://dummyimage.com/300x200/000/fff"/>
-    </div>
-  </a>
-</div>
+  {% for entry in entries %}
+    <a class="link" name="" href="/timeline-event">
+      <div class="entry">
+        <h1>{{ entry.date }}</h1>
+        <h2>{{ entry.name }}</h2>
+          <img src="{{ entry.photo}}"/>
+      </div>
+    </a>
+  {% endfor %}
 
   <div id="timeline_event">
-    <h3 class="event_name">Event Name</h3>
-    <h5 class="event_date">Event Date</h5>
-    <img class="event_image" src="https://static1.squarespace.com/static/556dc1f2e4b022801f578a35/556dc782e4b0fce3ad1a5c96/5975fa16b8a79b94b0cd4355/1500906553969/air-760325_960_720.jpg">
-    <p class="event_des"> Description of Event </p>
+    <h3 class="event_name">{{ name }}</h3>
+    <h5 class="event_date">{{ date }}</h5>
+    <img class="event_image" src="{{ photo }}">
+    <p class="event_des"> {{ des }} </p>
   </div>
 
 </html>

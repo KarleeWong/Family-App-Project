@@ -14,11 +14,11 @@
         <h1 class="title-text">My Collection</h1>
       </div>
 
-      {% for set in new_images: %}
-      <div class="collection_outline">
-        <img class="collection_pictures" src="{{ set.picture }}" alt=""><br>
-        <p>{{ set.description }}</p>
-      </div>
+      {% for one_set in all_images %}
+        <div class="collection_outline">
+          <img class="collection_pictures" src="{{ one_set.picture }}"/><br>
+          <p>{{ one_set.description }}</p>
+        </div>
       {% endfor %}
 
 </html>
