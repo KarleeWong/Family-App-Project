@@ -110,26 +110,6 @@ class Collection(BaseHandler):
         all_images = Albums.query().fetch()
         set = {
             'picture': picture,
-<<<<<<< HEAD
-            'description': desc
-        }
-        if self.session.get("new_images") is None:
-           self.session["new_images"] = []
-
-        self.session.get("new_images").append(set)
-
-        self.session['photo'] = new_images
-
-        family_members = self.request.get('family-member')
-        self.session['family-members-photo'] = family_members
-
-        images_descriptions = {
-            "new_images": self.session.get("new_images"),
-            'all_images': all_images
-        }
-
-        self.response.write(collection_template.render(images_descriptions))
-=======
             'description': description
         }
 
@@ -139,7 +119,6 @@ class Collection(BaseHandler):
         self.session.get("all_images").append(set)
 
         self.redirect('/collection')
->>>>>>> Karlee
 
 class Timeline(BaseHandler):
     def get(self):
