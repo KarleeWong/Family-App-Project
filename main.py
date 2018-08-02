@@ -1,8 +1,18 @@
 import webapp2
 import jinja2
 import os
+import json
+from google.appengine.ext import ndb
+from google.appengine.api import users
+from google.appengine.ext import blobstore
+from google.appengine.ext import ndb
+from google.appengine.ext.webapp import blobstore_handlers
 
 from webapp2_extras import sessions
+
+class Albums(ndb.Model):
+    image_url   = ndb.StringProperty(required=True)
+    description = ndb.StringProperty(required=True)
 
 class BaseHandler(webapp2.RequestHandler):
 
@@ -41,10 +51,13 @@ class frontpage(BaseHandler):
 
         frontpage_template = JINJA_ENVIRONMENT.get_template('templates/frontpage.html')
 
+        upload_url = blobstore.create_upload_url('/upload_photo')
+
         front_page_dictionary = {
             "front_image": front_image,
             "bio_text": bio_text,
-            "family_name": family_name
+            "family_name": family_name,
+            "upload_url" : upload_url
         }
 
         self.response.write(frontpage_template.render(front_page_dictionary))
@@ -85,23 +98,30 @@ class Collection(BaseHandler):
     def post(self):
         collection_template = JINJA_ENVIRONMENT.get_template('templates/collection.html')
 
-        set = {
-            'picture': self.request.get('add-image'),
-            'description': self.request.get('family-member')
-        }
+        picture = self.request.get('add-image')
+        desc = self.request.get('family-member')
 
+        album = Albums(image_url=picture, description=desc)
+        album.put()
+
+        all_images = Albums.query().fetch()
+        set = {
+            'picture': picture,
+            'description': desc
+        }
         if self.session.get("new_images") is None:
-            self.session["new_images"] = []
+           self.session["new_images"] = []
 
         self.session.get("new_images").append(set)
 
-        # self.session['photo'] = new_images
-        #
-        # family_members = self.request.get('family-member')
-        # self.session['family-members-photo'] = family_members
+        self.session['photo'] = new_images
+
+        family_members = self.request.get('family-member')
+        self.session['family-members-photo'] = family_members
 
         images_descriptions = {
-            "new_images": self.session.get("new_images")
+            "new_images": self.session.get("new_images"),
+            'all_images': all_images
         }
 
         self.response.write(collection_template.render(images_descriptions))
@@ -163,6 +183,47 @@ class Settings(webapp2.RequestHandler):
         settings_template = JINJA_ENVIRONMENT.get_template('templates/settings.html')
         self.response.write(settings_template.render())
 
+# class User_info(BaseHandler):
+    # def get(self):
+    #     user_template = JINJA_ENVIRONMENT.get_template('templates/login.html')
+    #     self.response.write(user_template.render())
+    # def post(self):
+    #     userid = self.request.get('id')
+    #     self.session['user'] = userid
+    #     print("Working")
+    #     self.redirect('/frontpage')
+
+#
+#         self.response.out.write(format(upload_url))
+
+# class UserPhoto(ndb.Model):
+#     # user = ndb.StringProperty()
+#     blob_key = ndb.BlobKeyProperty()
+
+# class PhotoUploadFormHandler(webapp2.RequestHandler):
+#     def get(self):
+#         upload_url = blobstore.create_upload_url('/upload_photo')
+#         self.response.out.write(upload_url)
+#
+# class PhotoUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
+#     def post(self):
+#         upload = self.get_uploads()[0]
+#         user_photo = UserPhoto(
+#             blob_key=upload.key())
+#         user_photo.put()
+#         self.response.write(upload)
+#         # self.redirect('/view_photo/%s' % upload.key())
+#         print(user_photo.blob_key)
+#
+#
+# class ViewPhotoHandler(blobstore_handlers.BlobstoreDownloadHandler):
+#     def get(self, photo_key):
+#         if not blobstore.get(photo_key):
+#             self.error(404)
+#         else:
+#             self.send_blob(photo_key)
+
+
 
 config = {}
 config['webapp2_extras.sessions'] = {
@@ -179,5 +240,9 @@ app = webapp2.WSGIApplication([
     ('/tree', Tree),
     ('/about', About),
     ('/profile', Profile),
-    ('/settings', Settings)
+    # ('/userinfo', User_info),
+    ('/settings', Settings),
+    # ('/', PhotoUploadFormHandler),
+    # ('/upload_photo', PhotoUploadHandler),
+    # ('/view_photo/([^/]+)?', ViewPhotoHandler),
 ], debug=True, config=config)

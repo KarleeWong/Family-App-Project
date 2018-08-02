@@ -23,7 +23,7 @@
             auth2.signOut().then(function () {
               console.log('User signed out.');
             });
-            window.location = "http://localhost:8080";
+            window.location = "/";
           }
 
           function onLoad() {
@@ -41,6 +41,16 @@
       <img src= "{{ front_image }}" >
     </div>
     </form>
+
+    <!-- # To upload files to the blobstore, the request method must be "POST"
+    # and enctype must be set to "multipart/form-data". -->
+
+  <!-- <html><body>
+    <form action="{{ upload_url }}" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file"><br>
+      <input type="submit" name="submit" value="Submit">
+    </form>
+  </body></html> -->
 
 
     <div id="des">
