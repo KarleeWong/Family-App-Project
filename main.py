@@ -169,16 +169,41 @@ class Timeline(BaseHandler):
 
 class TimelineEvent(BaseHandler):
     def get(self):
-        timeline_event_template = JINJA_ENVIRONMENT.get_template('templates/timeline_event.html')
-        entries = self.session.get('entries')
-        print("THIS IS YOUR ID:")
-        print(self.request.get("id"))
-        timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
-        timeline_dictionary = {
-            "entry": entries[int(self.request.get("id"))],
-            "entries": entries
+        if self.session.get("entries") is None:
+            entries = []
+            timeline_event_template = JINJA_ENVIRONMENT.get_template('templates/timeline_event.html')
+
+            new = {
+                'name': "Event Name",
+                "date": "Event Date",
+                "photo": "https://hackernest.com/assets/event-placeholder-62e479afe63ad167eb3bb6904efe06033f8b3d6e237983916b52adc98dd6cdb2.png",
+                "des": "Describe your event"
             }
-        self.response.write(timeline_event_template.render(timeline_dictionary))
+
+            opening = {
+                "name": "Event Name",
+                "date": "Event Date",
+                "photo": "https://cortescoop.ca/wp-content/themes/gecko/assets/images/placeholder.png"
+            }
+
+            entries.append(opening)
+
+            timeline_dictionary = {
+                "entry": new,
+                "entries": entries,
+                }
+            self.response.write(timeline_event_template.render(timeline_dictionary))
+        else:
+            timeline_event_template = JINJA_ENVIRONMENT.get_template('templates/timeline_event.html')
+            entries = self.session.get('entries')
+            print("THIS IS YOUR ID:")
+            print(self.request.get("id"))
+            timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
+            timeline_dictionary = {
+                "entry": entries[int(self.request.get("id"))],
+                "entries": entries
+                }
+            self.response.write(timeline_event_template.render(timeline_dictionary))
 
 class Tree(BaseHandler):
     def get(self):
