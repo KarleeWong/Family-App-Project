@@ -100,11 +100,7 @@ class Collection(BaseHandler):
         # family_members = self.request.get('family-member')
         # self.session['family-members-photo'] = family_members
 
-        images_descriptions = {
-            "new_images": self.session.get("new_images")
-        }
-
-        self.response.write(collection_template.render(images_descriptions))
+        self.redirect('/collection')
 
 class Timeline(BaseHandler):
     def get(self):
