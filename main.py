@@ -103,11 +103,18 @@ class Collection(BaseHandler):
 class Timeline(BaseHandler):
     def get(self):
         if self.session.get("entries") is None:
+            entries = []
             timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
-            timeline_dictionary = {
-                "date": "Event Date",
+            opening = {
                 "name": "Event Name",
-                "photo": "https://cortescoop.ca/wp-content/themes/gecko/assets/images/placeholder.png",
+                "date": "Event Date",
+                "photo": "https://cortescoop.ca/wp-content/themes/gecko/assets/images/placeholder.png"
+            }
+
+            entries.append(opening)
+
+            timeline_dictionary = {
+                "entries": entries,
                 }
             self.response.write(timeline_template.render(timeline_dictionary))
         else:
