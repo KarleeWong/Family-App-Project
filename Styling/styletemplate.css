@@ -62,10 +62,22 @@ img:hover{
   font-family: sans-serif;
 }
 
-/* body background */
+/* tree background */
 
 #tree {
   background-color: #99CED3;
+}
+
+#pro {
+  left: 0;
+  display: inline-block;
+  vertical-align:top;
+  display: inline-block;
+  position: relative;
+}
+
+#pro:hover {
+  left:0;
 }
 
 /* collection styling  */
@@ -75,7 +87,8 @@ img:hover{
 }
 
 .collection_outline {
-  margin: 1px;
+  margin: 15px;
+  padding: 10px;
   background-color: white;
   display: inline-block;
 }
@@ -143,6 +156,36 @@ textarea {
   margin-top: 0px;
 }
 
+input[type=text] {
+  width: 100%;
+  padding: 12px 12px;
+  margin-top: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  border: 1px solid;
+  box-shadow: -3px -3px #ada370;
+  border-radius: 10px;
+  display: block;
+  background-color: #F8E9A1;
+  border: none;
+  color: black;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+input[type=submit]:hover {
+  background-color: #d8c668;
+}
+
+
 /* tabs styling */
 
 h1 {
@@ -153,7 +196,7 @@ p {
   font-size: 12px;
 }
 
-a {
+.tab {
     position: absolute; /* Position them relative to the browser window */
     left: -100px; /* Position them outside of the screen */
     transition: 0.3s; /* Add transition on hover */
@@ -165,7 +208,7 @@ a {
     border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
 }
 
-a:hover {
+.tab:hover {
     left: 0; /* On mouse-over, make the elements appear as they should */
 }
 
@@ -276,5 +319,5 @@ a:hover {
 
 .link:hover {
   left: 0;
-  postion: relative;
+
 }
