@@ -52,17 +52,26 @@
       Click a person to see their profile.</p>
     </div>
 
-{% for layer in range(layers) %}
-  <div class="layers">
+{% set i = 1 %}
+{% set amt = 0 %}
+{% for layer in range(1,layers+1) %}
+  <div id="{{i}}" class="layers">
 
+    {% for member in members %}
+    {% set amt = amt + 1 %}
+    {% if member.layer|int == layer %}
     <div class="familyface">
-      <a href="/profile">
-        <img id="pro" src="{{tree_pic}}"/>
+      <a href="/profile?id={{amt}}">
+        <img id="pro" src="{{member.picture}}"/>
       </a>
-      <p> {{name}} </p>
+      <p> {{member.name}} </p>
     </div>
 
+    {% endif %}
+    {% endfor %}
+
   </div>
+{% set i = i + 1 %}
 {% endfor %}
 
 </html>

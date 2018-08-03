@@ -93,7 +93,7 @@ class Collection(BaseHandler):
             }
             all_images.append(set)
             collection_dictionary = {
-                "all_images": "all_images"
+                "all_images": all_images
             }
             self.response.write(collection_template.render(collection_dictionary))
         else:
@@ -216,34 +216,52 @@ class TimelineEvent(BaseHandler):
 
 class Tree(BaseHandler):
     def get(self):
-        if self.session.get("tree-layer") is 0:
+        if self.session.get("num-layer") is None:
             tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
-            orgin = {
-            "layers":int(1),
-            "name": "Me",
-            "tree_pic":"http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg",
-            "description": "That's me! :)"
-            }
-            self.response.write(tree_template.render(orgin))
-        if self.session.get("family-member-name") is None:
-            tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
-            orgin = {
-                "layers":int(self.request.get("tree-layer")),
+            member = {
                 "name": "Me",
-                "tree_pic":"http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg",
-                "description": "That's me! :)"
+                "picture": "http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg",
+                "description":"That's me! :)"
+            }
+            orgin = {
+                "layers":int(1),
+                "member": member
             }
             self.response.write(tree_template.render(orgin))
-        tree_dictionary = {
-            "layers": int(self.request.get("tree-layer")),
-            "name": self.request.get("family-member-name"),
-            "tree_pic": self.request.get("family-member-pic"),
-            "description": self.request.get("family-member-des")
-        }
-        self.response.write(tree_template.render(tree_dictionary))
+        elif self.session.get("family_member") is None:
+            tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
+            print("NUBMER LAYER!")
+            print("Layer", self.session.get("num-layer"))
+            member = {
+                "name": "Me",
+                "picture":"http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg",
+                "description":"That's me! :)"
+            }
+            
+            orgin = {
+                "layers":int(self.session.get("num-layer")),
+                "member": member
+            }
+
+            self.response.write(tree_template.render(orgin))
+        else:
+            tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
+            orgin = {
+                "layers":int(self.session.get("num-layer")),
+                "members": [self.session.get("family_member")],
+            }
+
+            self.response.write(tree_template.render(orgin))
 
     def post(self):
-        self.session["tree-layer"] = self.request.get("layer-num")
+        family_member = {
+            "name": self.request.get("family-member-name"),
+            "picture": self.request.get("family-member-pic"),
+            "description":self.request.get("family-member-des"),
+            "layer":int(self.request.get("family-layer"))
+        }
+
+        self.session["family_member"] = family_member
 
         self.redirect('/tree')
 
@@ -263,10 +281,15 @@ class About(webapp2.RequestHandler):
         about_template = JINJA_ENVIRONMENT.get_template('templates/about.html')
         self.response.write(about_template.render())
 
-class Settings(webapp2.RequestHandler):
+class Settings(BaseHandler):
     def get(self):
         settings_template = JINJA_ENVIRONMENT.get_template('templates/settings.html')
         self.response.write(settings_template.render())
+
+    def post(self):
+        self.session["num-layer"] = self.request.get("layer-num")
+
+        self.redirect('/settings')
 
 # class User_info(BaseHandler):
     # def get(self):
