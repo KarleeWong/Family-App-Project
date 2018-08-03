@@ -203,7 +203,6 @@ class TimelineEvent(BaseHandler):
             entries = self.session.get('entries')
             print("THIS IS YOUR ID:")
             print(self.request.get("id"))
-            timeline_template = JINJA_ENVIRONMENT.get_template('templates/timeline.html')
             timeline_dictionary = {
                 "entry": entries[int(self.request.get("id"))],
                 "entries": entries
@@ -278,14 +277,34 @@ class Tree(BaseHandler):
 
 class Profile(BaseHandler):
     def get(self):
-        profile_template = JINJA_ENVIRONMENT.get_template('templates/profile.html')
-        orgin = {
-            "layers":int(1),
-            "name": "Me",
-            "tree_pic":"https://www.f6s.com/images/profile-placeholder-user.jpg",
-            "description": "That's me! :)"
-        }
-        self.response.write(profile_template.render(orgin))
+        if self.session.get("all_members") is None:
+            all_images = []
+            profile_template = JINJA_ENVIRONMENT.get_template('templates/profile.html')
+            new = {
+                "layers":int(1),
+                "name": "Me",
+                "picture":"https://www.f6s.com/images/profile-placeholder-user.jpg",
+                "description": "That's me! :)"
+            }
+
+            all_images.append(new)
+
+            base = {
+                "profile": new
+            }
+
+            self.response.write(profile_template.render(base))
+
+        else:
+            profile_template = JINJA_ENVIRONMENT.get_template('templates/profile.html')
+            members = self.session.get("all_members")
+            print("THIS IS YOUR AMT", self.request.get("id"))
+            profile_dictionary = {
+                "profile": members[int(self.request.get("id"))]
+            }
+
+            self.response.write(profile_template.render(profile_dictionary))
+
 
 class About(webapp2.RequestHandler):
     def get(self):

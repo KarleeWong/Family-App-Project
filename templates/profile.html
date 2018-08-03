@@ -5,7 +5,6 @@
     <title>Profile</title>
     <link rel="stylesheet" href="../Styling/profile.css">
     <style media="screen">
-
       #profile-pic{
         border-radius: 0%;
       }
@@ -13,11 +12,11 @@
   </head>
   <body>
     <div>
-      <h2>{{name}}</h2>
-      <img id="profile-pic" src="{{tree_pic}}" alt="Person">
+      <h2>{{profile.name}}</h2>
+      <img id="profile-pic" src="{{profile.picture}}" alt="Person">
     </div>
 
-    <p>{{description}}</p>
+    <p>{{profile.description}}</p>
 
     <div>
       <a class="tab" href="/frontpage" id="frontpage">Home</a>
