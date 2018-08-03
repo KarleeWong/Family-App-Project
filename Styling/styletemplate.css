@@ -115,12 +115,25 @@ img:hover{
 .center-form {
   margin-left:15%;
   margin-right:15%;
+  margin-bottom: 80px;
 }
 
 .inputs {
   margin-top: 0px;
   padding: 25px;
   background-color: white;
+}
+
+.center-form h1 {
+  border: solid white 3px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #F8E9A1;
+  font-family: monospace;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+
 }
 
 .center-form h2 {
