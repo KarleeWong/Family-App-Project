@@ -113,10 +113,6 @@ class Collection(BaseHandler):
         picture = self.request.get('add-image')
         desc = self.request.get('family-member')
 
-        album = Albums(image_url=picture, description=desc)
-        album.put()
-
-        all_images = Albums.query().fetch()
         set = {
             'picture': picture,
             'description': description
@@ -218,37 +214,49 @@ class Tree(BaseHandler):
     def get(self):
         if self.session.get("num-layer") is None:
             tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
+            members = []
             member = {
                 "name": "Me",
                 "picture": "http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg",
-                "description":"That's me! :)"
+                "description":"That's me! :)",
+                "layer": 1
             }
+
+            members.append(member)
+
             orgin = {
                 "layers":int(1),
-                "member": member
-            }
-            self.response.write(tree_template.render(orgin))
-        elif self.session.get("family_member") is None:
-            tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
-            print("NUBMER LAYER!")
-            print("Layer", self.session.get("num-layer"))
-            member = {
-                "name": "Me",
-                "picture":"http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg",
-                "description":"That's me! :)"
-            }
-            
-            orgin = {
-                "layers":int(self.session.get("num-layer")),
-                "member": member
+                "members": members
             }
 
             self.response.write(tree_template.render(orgin))
+
+        elif self.session.get("all_members") is None:
+            tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
+
+            members = []
+
+            member = {
+                "name": "Me",
+                "picture":"http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg",
+                "description":"That's me! :)",
+                "layer": self.session.get("num-layer")
+            }
+
+            members.append(member)
+
+            orgin = {
+                "layers":int(self.session.get("num-layer")),
+                "members": members
+            }
+
+            self.response.write(tree_template.render(orgin))
+
         else:
             tree_template = JINJA_ENVIRONMENT.get_template('templates/tree.html')
             orgin = {
                 "layers":int(self.session.get("num-layer")),
-                "members": [self.session.get("family_member")],
+                "members": self.session.get("all_members"),
             }
 
             self.response.write(tree_template.render(orgin))
@@ -261,7 +269,10 @@ class Tree(BaseHandler):
             "layer":int(self.request.get("family-layer"))
         }
 
-        self.session["family_member"] = family_member
+        if self.session.get("all_members") is None:
+            self.session["all_members"] = []
+
+        self.session["all_members"] = self.session["all_members"] + [family_member]
 
         self.redirect('/tree')
 
