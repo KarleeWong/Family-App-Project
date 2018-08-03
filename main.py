@@ -113,10 +113,6 @@ class Collection(BaseHandler):
         picture = self.request.get('add-image')
         desc = self.request.get('family-member')
 
-        album = Albums(image_url=picture, description=desc)
-        album.put()
-
-        all_images = Albums.query().fetch()
         set = {
             'picture': picture,
             'description': description
@@ -237,7 +233,7 @@ class Tree(BaseHandler):
                 "picture":"http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg",
                 "description":"That's me! :)"
             }
-            
+
             orgin = {
                 "layers":int(self.session.get("num-layer")),
                 "member": member
